@@ -164,13 +164,12 @@ response = requests.get('http://localhost:8000/files/search',
 
 ## Testing
 
-Run the test script to verify the implementation:
+Run the RAG-related tests to verify the implementation:
 ```bash
-cd backend
-python test_rag_pipeline.py
+pytest app/tests/test_rag_llm.py app/tests/test_simple_rag.py
 ```
 
-The test script will:
+The tests will:
 1. Check service health
 2. Process a sample document
 3. Test embedding generation

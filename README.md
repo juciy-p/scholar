@@ -1,6 +1,6 @@
-# Scholar - AI-Powered Desktop Study Assistant
+# Scholar Backend - AI-Powered Study API
 
-An intelligent desktop application that transforms your study materials into interactive learning experiences using AI. Scholar works completely offline using your own documents and provides three powerful study modes: Q&A Chat, Quiz Generation, and Flashcard Creation.
+An AI-powered backend that transforms your study materials into interactive learning experiences. Scholar works completely offline using your own documents and provides three powerful study modes: Q&A Chat, Quiz Generation, and Flashcard Creation.
 
 ## 🚀 Features
 
@@ -27,13 +27,7 @@ An intelligent desktop application that transforms your study materials into int
 
 ## 🏗️ Architecture
 
-Scholar is built with a modern, scalable architecture:
-
-### Frontend (Next.js + Electron)
-- **Next.js 14**: React-based frontend with TypeScript
-- **Electron**: Cross-platform desktop application wrapper
-- **Tailwind CSS**: Modern, responsive UI design
-- **Radix UI**: Accessible component library
+Scholar is built with a modern, scalable backend architecture:
 
 ### Backend (FastAPI + Python)
 - **FastAPI**: High-performance Python web framework
@@ -53,7 +47,6 @@ Scholar is built with a modern, scalable architecture:
 ## 📦 Installation
 
 ### Prerequisites
-- **Node.js 18+** and **npm**
 - **Python 3.13+** and **uv**
 - **Ollama** with `nomic-embed-text` model
 
@@ -68,41 +61,17 @@ git clone https://github.com/yourusername/scholar.git
 cd scholar
 ```
 
-### 3. Setup Backend
+### 3. Install Dependencies
 ```bash
-cd backend
-
 # Install dependencies with uv
 uv sync
 ```
 
-### 4. Setup Frontend
-```bash
-cd frontend
-
-# Install dependencies
-npm install
-```
-
-### 5. Setup Electron (Desktop App)
-```bash
-cd electron
-
-# Install dependencies
-bun install
-```
-
 ## 🚀 Usage
 
-### Starting the Application
-
-#### Development Mode
+### Starting the Server
 ```bash
-# Terminal 1: Start backend
-cd backend && uv run uvicorn app.main:app --reload
-
-# Terminal 2: Start frontend
-cd frontend && bun run electron:dev
+uv run uvicorn app.main:app --reload
 ```
 
 ### Using Scholar
@@ -144,38 +113,23 @@ ollama pull gpt-oss:20b  # or your preferred LLM
 ```
 
 ## 🧪 Testing
-
-### Backend Tests
 ```bash
-cd backend
 pytest
-```
-
-### Frontend Tests
-```bash
-cd frontend
-npm test
 ```
 
 ## 📁 Project Structure
 
 ```
 scholar/
-├── backend/                 # FastAPI backend
-│   ├── app/
-│   │   ├── api/routes/     # API endpoints
-│   │   ├── services/       # Business logic
-│   │   ├── models/         # Data models
-│   │   └── core/           # Configuration
-│   ├── chroma_db/          # Vector database
-│   └── uploads/            # Document storage
-├── frontend/               # Next.js frontend
-│   ├── app/               # App router pages
-│   ├── components/        # React components
-│   └── lib/               # Utilities and hooks
-├── electron/              # Desktop app wrapper
-│   ├── main.js           # Main process
-│   └── preload.js        # Preload script
+├── app/
+│   ├── api/routes/     # API endpoints
+│   ├── services/       # Business logic
+│   ├── models/         # Data models
+│   └── core/           # Configuration
+├── chroma_db/          # Vector database
+├── uploads/            # Document storage
+├── API.md              # API documentation
+├── pytest.ini
 └── README.md
 ```
 
@@ -197,8 +151,6 @@ This project is licensed under the Apache License - see the [LICENSE](LICENSE) f
 - **FastApi** for backend framework
 - **ChromaDB** for vector storage
 - **Ollama** for local LLM inference
-- **Next.js** for the frontend framework
-- **Electron** for desktop app capabilities
 
 ## 🔮 Roadmap
 
