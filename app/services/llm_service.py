@@ -437,7 +437,6 @@ Flashcards:"""
         }
         
         lines = content.split('\n')
-        current_section = None
         
         for line in lines:
             line = line.strip()
@@ -491,7 +490,6 @@ Flashcards:"""
             
             # Detect sections
             if line.isupper() or (len(line) < 50 and line.endswith(':')):
-                current_section = line
                 analysis['sections'].append(line)
         
         return analysis
@@ -504,7 +502,7 @@ Flashcards:"""
         if analysis['main_topic']:
             templates.append({
                 'type': 'main_topic',
-                'question': f"What is the primary focus of this document?",
+                'question': "What is the primary focus of this document?",
                 'correct_answer': analysis['main_topic']
             })
         
@@ -515,7 +513,7 @@ Flashcards:"""
             concept_name = first_concept.split(':')[0] if ':' in first_concept else first_concept[:50]
             templates.append({
                 'type': 'key_concepts',
-                'question': f"Which of the following is a key concept discussed in this document?",
+                'question': "Which of the following is a key concept discussed in this document?",
                 'correct_answer': concept_name.strip()
             })
         
@@ -526,7 +524,7 @@ Flashcards:"""
             app_name = first_app.split(':')[0] if ':' in first_app else first_app[:50]
             templates.append({
                 'type': 'applications',
-                'question': f"What are some applications mentioned in this document?",
+                'question': "What are some applications mentioned in this document?",
                 'correct_answer': app_name.strip()
             })
         
@@ -543,7 +541,7 @@ Flashcards:"""
         if analysis['examples']:
             templates.append({
                 'type': 'examples',
-                'question': f"Which of the following is an example mentioned in this document?",
+                'question': "Which of the following is an example mentioned in this document?",
                 'correct_answer': analysis['examples'][0] if analysis['examples'] else "Examples"
             })
         
@@ -614,14 +612,14 @@ Flashcards:"""
             "type": "multiple_choice",
             "options": options,
             "correct_answer": correct_answer,
-            "explanation": f"This answer is directly supported by the document content."
+            "explanation": "This answer is directly supported by the document content."
         }
     
     def _create_true_false_question(self, template: Dict[str, Any], analysis: Dict[str, Any], index: int) -> Dict[str, Any]:
         """Create a true/false question based on template and analysis"""
         if template['type'] == 'main_topic':
             true_statement = f"This document discusses {template['correct_answer']}"
-            false_statement = f"This document is about an unrelated topic"
+            false_statement = "This document is about an unrelated topic"
         else:
             true_statement = f"This document contains information about {template['correct_answer']}"
             false_statement = f"This document does not mention {template['correct_answer']}"

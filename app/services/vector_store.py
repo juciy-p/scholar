@@ -1,9 +1,8 @@
 # Vector store service for storing and retrieving embeddings
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
-from typing import List, Dict, Any, Optional, Tuple
+from typing import List, Dict, Any
 import logging
-import os
 from pathlib import Path
 from datetime import datetime
 
@@ -33,7 +32,7 @@ class VectorStoreService:
                 embedding_function=self.embeddings,
                 collection_name=self.collection_name
             )
-            logger.info(f"Vector store initialized successfully")
+            logger.info("Vector store initialized successfully")
         except Exception as e:
             logger.error(f"Error initializing vector store: {str(e)}")
             raise

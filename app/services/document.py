@@ -1,8 +1,5 @@
 # Document processing service
-import os
 import uuid
-import tempfile
-import shutil
 from typing import Dict, Any, Optional, List
 from pathlib import Path
 import logging
@@ -10,7 +7,7 @@ from datetime import datetime
 
 from .extractor import DocumentExtractor
 from .chunking import TextChunkingService
-from ..models.file import FileInfo, FileUploadResponse, UploadError
+from ..models.file import FileInfo, FileUploadResponse
 
 logger = logging.getLogger(__name__)
 

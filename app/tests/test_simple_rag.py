@@ -64,7 +64,6 @@ async def test_rag_components():
         
         # Test 5: QA Service
         logger.info("Test 5: Testing QA service...")
-        from app.services.qa_service import qa_service
         
         # Test QA service initialization
         logger.info("✅ QA service initialized successfully")
@@ -142,7 +141,7 @@ async def test_full_pipeline():
         qa_response = await qa_service.ask_question(qa_request)
         
         if qa_response.answer:
-            logger.info(f"✅ QA Response generated successfully!")
+            logger.info("✅ QA Response generated successfully!")
             logger.info(f"Answer preview: {qa_response.answer[:100]}...")
             logger.info(f"Confidence Score: {qa_response.confidence_score}")
             logger.info(f"Processing Time: {qa_response.processing_time:.2f}s")
@@ -160,7 +159,7 @@ async def test_full_pipeline():
         )
         
         if llm_answer:
-            logger.info(f"✅ LLM direct test successful!")
+            logger.info("✅ LLM direct test successful!")
             logger.info(f"LLM Answer preview: {llm_answer[:100]}...")
         else:
             logger.error("❌ LLM direct test failed")

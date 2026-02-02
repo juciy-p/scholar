@@ -3,11 +3,10 @@ from typing import Dict, Any, List, Optional
 import logging
 import uuid
 from datetime import datetime
-import asyncio
 
 from ..models.qa import (
     QASession, QAMessage, QARequest, QAResponse, 
-    QASessionCreate, QASessionResponse, RAGContext
+    QASessionCreate, QASessionResponse
 )
 from .rag_pipeline import rag_pipeline_service
 from .document import DocumentService

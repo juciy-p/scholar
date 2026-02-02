@@ -1,7 +1,6 @@
 # Flashcard service for generating flashcards from documents
 from typing import Dict, Any, List
 import logging
-import uuid
 from datetime import datetime
 
 from ..models.flashcard import (

@@ -1,8 +1,7 @@
 # Test chunking functionality
 import pytest
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 import tempfile
-import os
 import sys
 from pathlib import Path
 

@@ -1,10 +1,9 @@
 # File management API routes
-from fastapi import APIRouter, UploadFile, File, HTTPException, Depends, Query
-from fastapi.responses import JSONResponse
+from fastapi import APIRouter, UploadFile, File, HTTPException, Query
 from typing import List, Optional
 import logging
 
-from ...models.file import FileUploadResponse, FileInfo, UploadError
+from ...models.file import FileUploadResponse, FileInfo
 from ...services.document import DocumentService
 from ...services.extractor import DocumentExtractor
 from ...services.rag_pipeline import rag_pipeline_service

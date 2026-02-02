@@ -1,6 +1,6 @@
 # Question-Answer API routes
-from fastapi import APIRouter, HTTPException, Depends, Query
-from typing import List, Optional
+from fastapi import APIRouter, HTTPException
+from typing import List
 import logging
 
 from ...models.qa import (

@@ -1,8 +1,7 @@
 # RAG Pipeline service for end-to-end document processing
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 import logging
 from datetime import datetime
-import asyncio
 
 from .document import DocumentService
 from .embedding import EmbeddingService, EmbeddingResult

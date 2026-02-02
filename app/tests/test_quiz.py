@@ -1,15 +1,13 @@
 # Test quiz functionality
 import pytest
-import asyncio
 from datetime import datetime
-from unittest.mock import Mock, patch
+from unittest.mock import Mock
 
 from app.models.quiz import (
     QuizRequest, QuizQuestion, QuestionType, DifficultyLevel,
     QuizSessionCreate, QuizSubmission
 )
 from app.services.quiz_service import QuizService
-from app.services.llm_service import LLMService
 
 @pytest.fixture
 def mock_document_service():
@@ -82,7 +80,7 @@ class TestQuizService:
         assert session.session_id is not None
         assert session.quiz_id == quiz_id
         assert session.file_id == "test-file-123"
-        assert session.is_completed == False
+        assert not session.is_completed
         assert session.score is None
     
     @pytest.mark.asyncio
@@ -129,27 +127,27 @@ class TestQuizService:
         question = sample_questions[0]  # Multiple choice question
         
         # Test correct answer
-        assert quiz_service._check_answer(question, "A") == True
+        assert quiz_service._check_answer(question, "A")
         
         # Test incorrect answer
-        assert quiz_service._check_answer(question, "B") == False
+        assert not quiz_service._check_answer(question, "B")
         
         # Test case insensitive
-        assert quiz_service._check_answer(question, "a") == True
+        assert quiz_service._check_answer(question, "a")
     
     def test_check_answer_true_false(self, quiz_service, sample_questions):
         """Test true/false answer checking"""
         question = sample_questions[1]  # True/false question
         
         # Test correct answer
-        assert quiz_service._check_answer(question, "True") == True
-        assert quiz_service._check_answer(question, "true") == True
-        assert quiz_service._check_answer(question, "T") == True
-        assert quiz_service._check_answer(question, "Yes") == True
+        assert quiz_service._check_answer(question, "True")
+        assert quiz_service._check_answer(question, "true")
+        assert quiz_service._check_answer(question, "T")
+        assert quiz_service._check_answer(question, "Yes")
         
         # Test incorrect answer
-        assert quiz_service._check_answer(question, "False") == False
-        assert quiz_service._check_answer(question, "No") == False
+        assert not quiz_service._check_answer(question, "False")
+        assert not quiz_service._check_answer(question, "No")
     
     def test_generate_feedback(self, quiz_service):
         """Test feedback generation"""

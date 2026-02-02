@@ -1,17 +1,14 @@
 # Quiz service for generating and managing quizzes from documents
-from typing import Dict, Any, List, Optional, Tuple
+from typing import Dict, List, Optional
 import logging
 import uuid
 from datetime import datetime
-import asyncio
-import json
 
 from ..models.quiz import (
     Quiz, QuizQuestion, QuizRequest, QuizResponse, QuizSession,
     QuizSubmission, QuizResult, QuizSessionCreate, QuizSessionResponse,
     QuizQuestionResponse, QuestionType, DifficultyLevel
 )
-from .rag_pipeline import rag_pipeline_service
 from .document import DocumentService
 from .llm_service import llm_service
 

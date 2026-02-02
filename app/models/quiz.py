@@ -1,6 +1,6 @@
 # Quiz model for storing quiz questions and answers
 from pydantic import BaseModel, Field
-from typing import List, Dict, Any, Optional, Literal
+from typing import List, Dict, Any, Optional
 from datetime import datetime
 from enum import Enum
 

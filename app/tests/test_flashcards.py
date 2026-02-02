@@ -1,5 +1,4 @@
 import pytest
-import asyncio
 from unittest.mock import Mock, patch, AsyncMock
 from datetime import datetime
 
@@ -178,21 +177,21 @@ class TestLLMServiceFlashcards:
             "back": "Artificial Intelligence",
             "difficulty": "easy"
         }
-        assert llm_service._validate_flashcard_format(valid_card) == True
+        assert llm_service._validate_flashcard_format(valid_card)
         
         # Test invalid flashcard (missing front)
         invalid_card = {
             "back": "Artificial Intelligence",
             "difficulty": "easy"
         }
-        assert llm_service._validate_flashcard_format(invalid_card) == False
+        assert not llm_service._validate_flashcard_format(invalid_card)
         
         # Test invalid flashcard (missing back)
         invalid_card2 = {
             "front": "What is AI?",
             "difficulty": "easy"
         }
-        assert llm_service._validate_flashcard_format(invalid_card2) == False
+        assert not llm_service._validate_flashcard_format(invalid_card2)
     
     @pytest.mark.asyncio
     async def test_generate_fallback_flashcards(self, llm_service):

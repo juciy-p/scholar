@@ -1,7 +1,5 @@
 # Document extractor service for reading PDF, Word, etc.
-import os
-import tempfile
-from typing import Dict, Any, Optional
+from typing import Dict, Any
 from pathlib import Path
 import PyPDF2
 from docx import Document

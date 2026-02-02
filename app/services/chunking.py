@@ -1,5 +1,5 @@
 # Text chunking service for breaking large documents into manageable pieces
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any
 import re
 import uuid
 from dataclasses import dataclass
